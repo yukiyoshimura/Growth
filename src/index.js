@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import Grid from './Grid';
 import './index.css';
 //import injectTapEventPlugin from "react-tap-event-plugin";
 import AppBar from 'material-ui/AppBar';
@@ -14,45 +15,27 @@ import FlatButton from 'material-ui/FlatButton';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
+const style = {
+  margin: 12,
+};
 
-// export default AppBarExampleIcon;
 
-/*
-class Header extends React.Component {
+class InputGoal extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-
-    return (
-
+    return(
       <div>
-        <h1>Hello, world</h1>
-        <MuiThemeProvider>
-          <RaisedButton label="Secondary" />
-        </MuiThemeProvider>
+      <RaisedButton label="START!!" secondary={true} style={style} href="goal_input.html" />
       </div>
-
-      /*
-      <AppBar
-        title="Title"
-        iconClassNameRight="muidocs-icon-navigation-expand-more"
-      />
-
-    );
-
+    )
   }
 
-};
-*/
+}
 
-/*
-<MuiThemeProvider>
-  <RaisedButton label="Secondary" secondary={true} />
-</MuiThemeProvider>
 
-*/
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -68,9 +51,12 @@ class Header extends React.Component {
       <AppBar
           title="Growth"
           iconClassNameRight="muidocs-icon-navigation-expand-more"
-          iconElementRight={<FlatButton label="Save" />}
+          iconElementRight={<FlatButton label="LogIn" />}
       />
+      <InputGoal />
+      <Grid />
       </div>
+
     );
   }
 }
@@ -81,6 +67,8 @@ Header.childContextTypes = {
 
 ReactDOM.render(
     <Header />,
+  // --  <Grid />, -->
+  //  <App />,
   document.getElementById('root')
 );
 

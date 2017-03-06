@@ -4,21 +4,82 @@ import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
-class Grid extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to Growth</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <input type="text" />
+
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  },
+  gridList: {
+    width: 500,
+    height: 450,
+    overflowY: 'auto',
+  },
+};
+
+const tilesData = [
+  {
+    img:  'images/pic1.jpg',
+    title:  '座禅をする',
+    author: 'ゆかちん',
+  },
+  {
+    img:  'images/pic2.jpg',
+    title:  'ラインポップで10000点',
+    author: '河村',
+  },
+  {
+    img:  'images/pic3.jpg',
+    title:  '親友の結婚式でスピーチをする',
+    author: 'ATUSHI',
+  },
+  {
+    img:  'images/pic4.jpg',
+    title:  'Going to Balcelona',
+    author: 'Ronald',
+  },
+  {
+    img:  'images/pic5.jpg',
+    title:  'カナダに行く',
+    author: 'test',
+  },
+  {
+    img:  'images/pic6.jpg',
+    title:  'サグラダファミリアをバックに写真を撮る',
+    author: 'YUKI',
+  },
+];
+
+class Grid extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(tilesData);
+  }
+
+  render () {
+    return(
+      <div style={styles.root}>
+        <GridList
+          cellHeight={200}
+          style={styles.gridList}
+        >
+          <Subheader>Recently</Subheader>
+          {tilesData.map((tile) => (
+            <GridTile
+              key={tile.img}
+              title={tile.title}
+              subtitle={<span>by <b>{tile.author}</b></span>}
+              actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+            >
+              <img src={tile.img} />
+            </GridTile>
+          ))}
+        </GridList>
       </div>
     );
   }
 }
 
-export default App;
+
+export default Grid;
