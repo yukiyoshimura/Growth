@@ -1,7 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// Import routing components
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+
 import App from './App';
 import Grid from './Grid';
+import InputForm from './InputForm';
 import './index.css';
 //import injectTapEventPlugin from "react-tap-event-plugin";
 import AppBar from 'material-ui/AppBar';
@@ -25,15 +33,28 @@ class InputGoal extends React.Component {
     super(props);
   }
 
+  static childContextTypes =
+  {
+      muiTheme: React.PropTypes.object
+  }
+
+  getChildContext()
+  {
+      return {
+          muiTheme: getMuiTheme()
+      }
+  }
+
   render() {
     return(
       <div>
-      <RaisedButton label="START!!" secondary={true} style={style} href="goal_input.html" />
+      <RaisedButton label="START!!" secondary={true} style={style} containerElement={<Link to="/regist" />} />
       </div>
     )
   }
 
 }
+
 
 
 class Header extends React.Component {
@@ -53,10 +74,22 @@ class Header extends React.Component {
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           iconElementRight={<FlatButton label="LogIn" />}
       />
-      <InputGoal />
-      <Grid />
       </div>
+    );
+  }
+}
 
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return(
+      <div>
+        <InputGoal />
+        <Grid />
+      </div>
     );
   }
 }
@@ -65,11 +98,42 @@ Header.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired,
 };
 
+
+class RegistHome extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return(
+      <div>
+      <InputForm />
+      </div>
+    )
+  }
+}
+
+
+
+const Logout = React.createClass({
+  render() {
+    return <p>You are now logged out</p>
+  }
+})
+
 ReactDOM.render(
-    <Header />,
-  // --  <Grid />, -->
-  //  <App />,
+<Router>
+   <div>
+   <Header/>
+     <ul>
+       <li><Link to="/">Home</Link></li>
+     </ul>
+     <hr/>
+
+     <Route exact path="/" component={Home}/>
+     <Route path="/regist" component={RegistHome}/>
+     <Route path="/topics" component={Logout}/>
+   </div>
+ </Router>,
   document.getElementById('root')
 );
-
-//setInterval(tick, 1000);

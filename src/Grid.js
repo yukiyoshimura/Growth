@@ -3,6 +3,8 @@ import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+// for solved error
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 
 const styles = {
@@ -21,8 +23,8 @@ const styles = {
 const tilesData = [
   {
     img:  'images/pic1.jpg',
-    title:  '座禅をする',
-    author: 'ゆかちん',
+    title:  'ride bicycle',
+    author: 'Tomy',
   },
   {
     img:  'images/pic2.jpg',
@@ -36,8 +38,8 @@ const tilesData = [
   },
   {
     img:  'images/pic4.jpg',
-    title:  'Going to Balcelona',
-    author: 'Ronald',
+    title:  '山に登る',
+    author: 'ぽよ',
   },
   {
     img:  'images/pic5.jpg',
@@ -55,6 +57,18 @@ class Grid extends React.Component {
   constructor(props) {
     super(props);
     console.log(tilesData);
+  }
+
+  static childContextTypes =
+  {
+      muiTheme: React.PropTypes.object
+  }
+
+  getChildContext()
+  {
+      return {
+          muiTheme: getMuiTheme()
+      }
   }
 
   render () {
