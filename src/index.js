@@ -23,6 +23,7 @@ import FlatButton from 'material-ui/FlatButton';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
+// For Button
 const style = {
   margin: 12,
 };
