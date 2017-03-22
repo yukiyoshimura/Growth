@@ -9,7 +9,9 @@ import {
 
 import App from './App';
 import Grid from './Grid';
-import InputForm from './InputForm';
+import InputForm from './inputForm';
+import UserInfo from './viewUser';
+
 import './index.css';
 //import injectTapEventPlugin from "react-tap-event-plugin";
 import AppBar from 'material-ui/AppBar';
@@ -133,7 +135,7 @@ ReactDOM.render(
 
      <Route exact path="/" component={Home}/>
      <Route path="/regist" component={RegistHome}/>
-     <Route path="/topics" component={Logout}/>
+     <Route path="/userSample" component={UserInfo}/>
    </div>
  </Router>,
   document.getElementById('root')
