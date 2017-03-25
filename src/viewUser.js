@@ -31,20 +31,20 @@ class GoalListTbl extends React.Component {
             <TableHeaderColumn>ステータス</TableHeaderColumn>
           </TableRow>
       </TableHeader>
-      <TableBody stripedRows="true">
-        <TableRow selected="true">
+      <TableBody stripedRows={true}>
+        <TableRow selected={true}>
           <TableRowColumn>1</TableRowColumn>
           <TableRowColumn>高尾山登頂！</TableRowColumn>
           <TableRowColumn>達成！！</TableRowColumn>
         </TableRow>
         <TableRow>
           <TableRowColumn>2</TableRowColumn>
-          <TableRowColumn>Excelの資格とるお( ´ ▽ ` )ﾉ</TableRowColumn>
+          <TableRowColumn>"Excelの資格とるお( ´ ▽ ` )ﾉ"</TableRowColumn>
           <TableRowColumn>実行中</TableRowColumn>
         </TableRow>
         <TableRow>
           <TableRowColumn>3</TableRowColumn>
-          <TableRowColumn>腹筋毎日20回(⌒-⌒; )</TableRowColumn>
+          <TableRowColumn>"腹筋毎日20回(⌒-⌒; )"</TableRowColumn>
           <TableRowColumn>実行中</TableRowColumn>
         </TableRow>
         <TableRow>
@@ -72,12 +72,13 @@ class UserInfo extends React.Component {
     return(
       <div>
 　　　　　<p>
-          <img src="images/pic2.jpg" width="30%" height="30%" alt="Sample"></img>
+          <img src="images/example.jpg" width="20%" height="10%" alt="Sample"></img>
           <br />
         UserName:ぽよ
         <br />
-        <GoalListTbl/>
         </p>
+        <GoalListTbl/>
+
       </div>
     );
   }

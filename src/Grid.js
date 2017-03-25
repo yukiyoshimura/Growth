@@ -6,6 +6,12 @@ import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 // for solved error
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
+// Import routing components
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 const styles = {
   root: {
@@ -84,7 +90,7 @@ class Grid extends React.Component {
               key={tile.img}
               title={tile.title}
               subtitle={<span>by <b>{tile.author}</b></span>}
-              actionIcon={<IconButton href="/UserSample"><StarBorder color="white" /></IconButton>}
+              actionIcon={<IconButton containerElement={<Link to="/userSample" />}><StarBorder color="white" /></IconButton>}
             >
               <img src={tile.img} />
             </GridTile>

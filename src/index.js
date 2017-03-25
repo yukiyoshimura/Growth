@@ -19,6 +19,11 @@ import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
+import TextField from 'material-ui/TextField';
+
+import FontIcon from 'material-ui/FontIcon';
+import {grey300, yellow500, blue500} from 'material-ui/styles/colors';
+
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
@@ -30,6 +35,9 @@ const style = {
   margin: 12,
 };
 
+const iconStyles = {
+  marginTop: 4,
+};
 
 class InputGoal extends React.Component {
   constructor(props) {
@@ -77,6 +85,11 @@ class Header extends React.Component {
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           iconElementRight={<FlatButton label="LogIn" />}
       />
+      <TextField
+        hintText="検索キーワード"
+        floatingLabelText=""
+        />
+      <FontIcon className="material-icons" style={iconStyles} color={grey300}>search</FontIcon>
       </div>
     );
   }
