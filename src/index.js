@@ -39,6 +39,13 @@ const iconStyles = {
   marginTop: 4,
 };
 
+const TitleStyle = {
+    cursor: 'pointer',
+    textDecoration: 'none',
+    color: 'white',
+    fontSize: 30,
+};
+
 class InputGoal extends React.Component {
   constructor(props) {
     super(props);
@@ -81,7 +88,7 @@ class Header extends React.Component {
     return(
       <div>
       <AppBar
-          title="Growth"
+          title={<Link to="/" style={TitleStyle}>Growth</Link>}
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           iconElementRight={<FlatButton label="LogIn" />}
       />
@@ -141,9 +148,6 @@ ReactDOM.render(
 <Router>
    <div>
    <Header/>
-     <ul>
-       <li><Link to="/">Home</Link></li>
-     </ul>
      <hr/>
 
      <Route exact path="/" component={Home}/>
