@@ -15,6 +15,9 @@ import UserInfo from './viewUser';
 import './index.css';
 //import injectTapEventPlugin from "react-tap-event-plugin";
 import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import Drawer from 'material-ui/Drawer';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -73,6 +76,47 @@ class InputGoal extends React.Component {
 
 }
 
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {open: false};
+  }
+
+  handleToggle = () => this.setState({open: !this.state.open});
+
+  render() {
+    return (
+      <div>
+        <RaisedButton
+          label="Login"
+          onTouchTap={this.handleToggle}
+        />
+        <Drawer width={200} openSecondary={true} open={this.state.open} >
+          <AppBar title="Login"
+            iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+            onLeftIconButtonTouchTap={this.handleToggle}
+          />
+          <TextField
+            hintText="UserAccount"
+            floatingLabelText="UserAccount"
+          />
+          <TextField
+            hintText="Password"
+            floatingLabelText="Password"
+          />
+          <RaisedButton
+            label="GO"
+            secondary={true}
+            style={style}
+            containerElement={<Link to="/userSample" />}
+            onTouchTap={this.handleToggle}
+          />
+        </Drawer>
+      </div>
+    );
+  }
+}
+
 
 
 class Header extends React.Component {
@@ -90,7 +134,7 @@ class Header extends React.Component {
       <AppBar
           title={<Link to="/" style={TitleStyle}>Growth</Link>}
           iconClassNameRight="muidocs-icon-navigation-expand-more"
-          iconElementRight={<FlatButton label="LogIn" />}
+          iconElementRight={<Login />}
       />
       <TextField
         hintText="検索キーワード"
@@ -153,6 +197,7 @@ ReactDOM.render(
      <Route exact path="/" component={Home}/>
      <Route path="/regist" component={RegistHome}/>
      <Route path="/userSample" component={UserInfo}/>
+     <Route path="/userDetail" component={UserInfo}/>
    </div>
  </Router>,
   document.getElementById('root')
